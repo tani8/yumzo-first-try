@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const AuthForm = ({ type }) => {
+/*
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
@@ -13,10 +14,18 @@ const AuthForm = ({ type }) => {
       const payload = { email, password };
       if (type === 'register') {
         payload.name = name;
-        const response = await axios.post('http://localhost:5000/api/auth/register', payload);
+        const response = await axios.post('http://localhost:5000/api/auth/register', {
+          headers: {
+            'Authorization': `Bearer ${process.env.JWT_SECRET}`
+          }
+        }, payload);
         setMessage(`Registered successfully! Token: ${response.data.token}`);
       } else {
-        const response = await axios.post('http://localhost:5000/api/auth/login', payload);
+        const response = await axios.post('http://localhost:5000/api/auth/login', {
+          headers: {
+            'Authorization': `Bearer ${process.env.JWT_SECRET}`
+          }
+        }, payload);
         setMessage(`Logged in successfully! Token: ${response.data.token}`);
       }
     } catch (error) {
@@ -58,6 +67,7 @@ const AuthForm = ({ type }) => {
       <p>{message}</p>
     </form>
   );
+  */
 };
 
 export default AuthForm;
